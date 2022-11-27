@@ -6,4 +6,5 @@ class Constants {
   static String messagingSenderId = "885826653588";
   static String projectId = "successapp-e73f3";
   final primaryColor = const Color(0xFFee7b64);
+  final greenColor = Color.fromARGB(255, 70, 227, 154);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:success_app/pages/auth/login_page.dart';
 
 import '../../widgets/widgets.dart';
 
@@ -43,9 +44,56 @@ class _RegisterPageState extends State<RegisterPage> {
                       fontWeight: FontWeight.w400,
                       color: Colors.black),
                 ),
-                const SizedBox(height: 20),
-                Image.asset('assets/cargif.gif'),
-                const SizedBox(height: 60),
+                const SizedBox(height: 30),
+                Image.asset(
+                  'assets/regislogo.gif',
+                  height: 250,
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  decoration: textInputDecoration.copyWith(
+                      labelText: 'Name',
+                      prefixIcon: Icon(
+                        Icons.person,
+                        color: Theme.of(context).primaryColor,
+                      )),
+                  onChanged: (val) {
+                    setState(() {
+                      name = val;
+                      print('Name');
+                    });
+                  },
+                  //check
+                  validator: (val) {
+                    if (val!.isEmpty) {
+                      return null;
+                    } else {
+                      return 'Name cannot be empty';
+                    }
+                  },
+                ),
+                const SizedBox(height: 15),
+                TextFormField(
+                  obscureText: true,
+                  decoration: textInputDecoration.copyWith(
+                      labelText: 'Phone',
+                      prefixIcon: Icon(
+                        Icons.phone,
+                        color: Theme.of(context).primaryColor,
+                      )),
+                  validator: (val) {
+                    if (val!.length < 10) {
+                      return 'Password must be at least 10 digit';
+                    }
+                  },
+                  onChanged: (val) {
+                    setState(() {
+                      phone = val;
+                      print('phone');
+                    });
+                  },
+                ),
+                const SizedBox(height: 15),
                 TextFormField(
                   decoration: textInputDecoration.copyWith(
                       labelText: 'Email',
@@ -68,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         : 'Please enter a valid email';
                   },
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
                 TextFormField(
                   obscureText: true,
                   decoration: textInputDecoration.copyWith(
@@ -109,17 +157,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 const SizedBox(height: 10),
                 Text.rich(TextSpan(
-                    text: "Don't have an account? ",
+                    text: "Already have an account? ",
                     style: const TextStyle(color: Colors.black, fontSize: 14),
                     children: <TextSpan>[
                       TextSpan(
-                          text: "Register hear",
+                          text: "Login now",
                           style: const TextStyle(
                               color: Colors.black,
                               decoration: TextDecoration.underline),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              nextScreen(context, const RegisterPage());
+                              nextScreen(context, const LoginPage());
                             }),
                     ])),
               ],
