@@ -1,21 +1,21 @@
-import 'dart:ui';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:success_app/pages/auth/register_page.dart';
-import 'package:success_app/widgets/widgets.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+import '../../widgets/widgets.dart';
+
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
+  String name = '';
+  String phone = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,18 +37,15 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 10),
                 const Text(
-                  'Welcome back to',
+                  'Create your account now',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w400,
                       color: Colors.black),
                 ),
+                const SizedBox(height: 20),
+                Image.asset('assets/cargif.gif'),
                 const SizedBox(height: 60),
-                Image.asset(
-                  'assets/psu.gif',
-                  height: 250,
-                ),
-                const SizedBox(height: 40),
                 TextFormField(
                   decoration: textInputDecoration.copyWith(
                       labelText: 'Email',
@@ -102,11 +99,11 @@ class _LoginPageState extends State<LoginPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30))),
                     child: const Text(
-                      'Login',
+                      'Register',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     onPressed: () {
-                      login();
+                      register();
                     },
                   ),
                 ),
@@ -133,5 +130,5 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  login() {}
+  register() {}
 }
